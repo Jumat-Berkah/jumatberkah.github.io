@@ -18,11 +18,14 @@ jobs:
         with:
           node-version: "16" # Adjust Node.js version as needed
 
+      - name: Install Tailwind CSS Globally
+        run: npm install -g tailwindcss
+
       - name: Install dependencies
         run: npm install
 
       - name: Build Tailwind CSS
-        run: npm run build # Uses the "build" script from package.json
+        run: tailwindcss -i ./src/input.css -o ./dist/output.css --minify # Directly use the globally installed tailwindcss
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
